@@ -1,0 +1,21 @@
+{
+  "name": "gulp-inject-file",
+  "version": "0.0.1",
+  "description": "Gulp plugin for injecting files into another files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "gulp",
+    "inject",
+    "file"
+  ],
+  "author": "Marian Zagoruiko",
+  "license": "MIT",
+  "dependencies": {
+    "chai": "^1.10.0",
+    "gulp": "^3.8.10",
+    "gulp-mocha": "^2.0.0"
+  }
+}
