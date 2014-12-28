@@ -14,7 +14,7 @@
     ],
     "author": "Marian Zagoruiko",
     "license": "MIT",
-    "devDependencies": {
+    "dependencies": {
         "chai": "^1.10.0",
         "event-stream": "^3.2.0",
         "gulp": "^3.8.10",
