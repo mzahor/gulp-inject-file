@@ -1,7 +1,7 @@
 {
     "name": "gulp-inject-file",
     "repository": "https://github.com/mzahor/gulp-inject-file",
-    "version": "0.0.4",
+    "version": "0.0.6",
     "description": "Gulp plugin for injecting files into another files.",
     "main": "index.js",
     "scripts": {
