@@ -12,7 +12,7 @@ describe('gulp-inject-file', function() {
       var file = new gutil.File({
         path: 'test/fixtures/main.xml',
         cwd: 'test/',
-        base: 'test/fixtures',
+        base: 'test/',
         contents: fs.readFileSync('test/fixtures/main.xml')
       });
 
