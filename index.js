@@ -23,7 +23,6 @@ function gulpInjectFile(opts) {
 
             while (currMatch = regex.exec(content)) {
                 match = currMatch[0];
-                console.log(new Buffer(whitespace));
                 whitespace = currMatch[1];
                 fileName = currMatch[2];
                 
