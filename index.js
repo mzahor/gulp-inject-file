@@ -23,7 +23,7 @@ function gulpInjectFile(opts) {
 
             while (currMatch = regex.exec(content)) {
                 match = currMatch[0];
-                whitespace = currMatch[1];
+                whitespace = currMatch[1].replace(/\r?\n/, '');
                 fileName = currMatch[2];
                 
                 var injectContent = _(fs.readFileSync(path.join(path.dirname(file.path), fileName), 'utf8').split(/\r?\n/))
