@@ -24,7 +24,6 @@ describe('gulp-inject-file', function() {
       stream.on('data', function(newFile) {
         expect(newFile).to.exist;
         expect(newFile.contents).to.exist;
-        console.log(newFile.contents.toString('utf8'));
         expect(newFile.contents.toString('utf8')).to.equal(fs.readFileSync('test/expected/main.xml', 'utf8'));
         done();
       });
