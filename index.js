@@ -17,13 +17,14 @@ function gulpInjectFile(opts) {
 
         if (isBuffer) {
             var content = file.contents.toString('utf8');
-            var injectPattern = '^(\\s*)' + opts.pattern.replace(FILENAME_MARKER, FILENAME_PATTERN);
+            var injectPattern = '^([\\t ]*)' + opts.pattern.replace(FILENAME_MARKER, FILENAME_PATTERN);
             var regex = new RegExp(injectPattern, 'm');
             var fileName, whitespace;
 
             while (currMatch = regex.exec(content)) {
                 match = currMatch[0];
-                whitespace = currMatch[1].replace(/\r?\n/, '');
+                console.log(new Buffer(whitespace));
+                whitespace = currMatch[1];
                 fileName = currMatch[2];
                 
                 var injectContent = _(fs.readFileSync(path.join(path.dirname(file.path), fileName), 'utf8').split(/\r?\n/))
