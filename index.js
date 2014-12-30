@@ -25,7 +25,7 @@ function gulpInjectFile(opts) {
                 match = currMatch[0];
                 whitespace = currMatch[1];
                 fileName = currMatch[2];
-                console.log(new Buffer(whitespace));
+                
                 var injectContent = _(fs.readFileSync(path.join(path.dirname(file.path), fileName), 'utf8').split('\n'))
                     .map(function(line) {
                         return whitespace + line;
