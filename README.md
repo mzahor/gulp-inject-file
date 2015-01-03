@@ -23,6 +23,7 @@ npm install --save-dev gulp-inject-file
        	  	└── child.xml
 ```
 
+
 **The target file `src/main.xml`:**
 
 ```xml
@@ -32,11 +33,13 @@ npm install --save-dev gulp-inject-file
 </one>
 ```
 
+
 **The child file `src/subitems/child.xml`:**
 
 ```xml
 <child_record></child_record>
 ```
+
 
 **The `gulpfile.js`:**
 
