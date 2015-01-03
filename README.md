@@ -1,4 +1,4 @@
-# gulp-inject [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][depstat-image]][depstat-url]
+# gulp-inject-file [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][depstat-image]][depstat-url]
 
 > File inject plugin for [gulp](https://github.com/wearefractal/gulp). 
 
@@ -23,6 +23,7 @@ npm install --save-dev gulp-inject-file
        	  	└── child.xml
 ```
 
+
 **The target file `src/main.xml`:**
 
 ```xml
@@ -32,11 +33,13 @@ npm install --save-dev gulp-inject-file
 </one>
 ```
 
+
 **The child file `src/subitems/child.xml`:**
 
 ```xml
 <child_record></child_record>
 ```
+
 
 **The `gulpfile.js`:**
 
