@@ -26,7 +26,7 @@ function gulpInjectFile(opts) {
                 whitespace = currMatch[1];
                 fileName = currMatch[2];
                 
-                var injectContent = _(fs.readFileSync(path.join(path.dirname(file.path), fileName), 'utf8').split(/\r?\n/))
+                var injectContent = _(getFileContent(path.join(path.dirname(file.path), fileName)).split(/\r?\n/))
                     .map(function(line) {
                         return whitespace + line;
                     })
@@ -42,6 +42,16 @@ function gulpInjectFile(opts) {
         else if (isStream) {
             throw new PluginError(PLUGIN_NAME, 'Streams are not supported!');
         }
+    }
+
+    function getFileContent(path) {
+        var content;
+        try {
+            content = fs.readFileSync(path, 'utf8');
+        } catch (err) {
+            content = '';
+        }
+        return content;
     }
 
     return es.map(doInject);
