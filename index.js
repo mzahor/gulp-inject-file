@@ -25,7 +25,7 @@ function gulpInjectFile(opts) {
                 match = currMatch[0];
                 whitespace = currMatch[1];
                 fileName = currMatch[2];
-                
+
                 var injectContent = _(getFileContent(path.join(path.dirname(file.path), fileName)).split(/\r?\n/))
                     .map(function(line) {
                         return whitespace + line;
@@ -38,7 +38,7 @@ function gulpInjectFile(opts) {
 
             file.contents = new Buffer(content);
             callback(null, file);
-        } 
+        }
         else if (isStream) {
             throw new PluginError(PLUGIN_NAME, 'Streams are not supported!');
         }
@@ -51,7 +51,20 @@ function gulpInjectFile(opts) {
         } catch (err) {
             content = '';
         }
+
+        content = transformContent(content, path);
+
         return content;
+    }
+
+    function transformContent(content, path) {
+      var transformedContent = content;
+
+      if(typeof opts.transform === 'function') {
+        transformedContent = opts.transform(content, path);
+      }
+
+      return transformedContent;
     }
 
     return es.map(doInject);

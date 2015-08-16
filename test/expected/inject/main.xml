@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
 	<existing />
-	<!-- inject: ../fixtures/sections/subitem.xml -->
+	<sub-item1 />
+	<sub-item2 />
 </data>
