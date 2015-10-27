@@ -29,7 +29,7 @@ npm install --save-dev gulp-inject-file
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <one>
-	<!-- inject: ./subitems/child.xml -->
+	<!-- inject: ./subitems/child.xml-->
 </one>
 ```
 
