@@ -19,8 +19,8 @@ npm install --save-dev gulp-inject-file
 ```
 └── src
     └── main.xml
-     	└── subitems
-       	  	└── child.xml
+        └── subitems
+            └── child.xml
 ```
 
 
@@ -29,7 +29,7 @@ npm install --save-dev gulp-inject-file
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <one>
-	<!-- inject: ./subitems/child.xml-->
+    <!-- inject: ./subitems/child.xml-->
 </one>
 ```
 
@@ -48,13 +48,13 @@ var gulp = require('gulp');
 var injectfile = require("gulp-inject-file");
 
 gulp.task('inject', function () {
-	return gulp.src('./src/main.xml')
-				.pipe(injectfile({
-					// can use custom regex pattern here
-					// <filename> token will be replaces by filename regex pattern.
+    return gulp.src('./src/main.xml')
+                .pipe(injectfile({
+                    // can use custom regex pattern here
+                    // <filename> token will be replaces by filename regex pattern.
                     // this parameter is optional, default value: '<!-- inject\\:<filename> -->'
-					pattern: '<!--\\sinject:<filename>-->'
-				}));
+                    pattern: '<!--\\sinject:<filename>-->'
+                }));
 });
 ```
 
@@ -63,7 +63,7 @@ gulp.task('inject', function () {
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <one>
-	<child_record></child_record>
+    <child_record></child_record>
 </one>
 ```
 
