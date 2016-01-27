@@ -33,6 +33,27 @@ describe('gulp-inject-file', function() {
       stream.end();
     });
 
+    it('should inject file using default', function(done) {
+      var file = new gutil.File({
+        path: 'test/fixtures/inject/main.xml',
+        cwd: 'test/fixtures/inject/',
+        base: 'test/fixtures/inject/',
+        contents: fs.readFileSync('test/fixtures/inject/main.xml')
+      });
+
+      var stream = injectFilePlugin();
+
+      stream.on('data', function(newFile) {
+        expect(newFile).to.exist;
+        expect(newFile.contents).to.exist;
+        expect(newFile.contents.toString('utf8')).to.equal(fs.readFileSync('test/expected/inject/main.xml', 'utf8'));
+        done();
+      });
+
+      stream.write(file);
+      stream.end();
+    });
+
     describe('transformation', function () {
       var file, transformMock, pattern, options;
 

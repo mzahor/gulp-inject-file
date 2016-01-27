@@ -10,6 +10,10 @@ const PLUGIN_NAME = 'gulp-inject-file';
 function gulpInjectFile(opts) {
     const FILENAME_PATTERN = '\\s*([\\w\\-\\_\\.\\\\\\/]+)';
     const FILENAME_MARKER = '<filename>';
+    const DEFAULT_PATTERN = '<!-- inject\\:<filename> -->';
+
+    opts = opts || {};
+    opts.pattern = opts.pattern || DEFAULT_PATTERN;
 
     function doInject(file, callback) {
         var isStream = file.contents && typeof file.contents.on === 'function' && typeof file.contents.pipe === 'function';
