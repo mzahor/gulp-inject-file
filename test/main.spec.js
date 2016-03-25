@@ -69,6 +69,7 @@ describe('gulp-inject-file', function() {
 				expect(newFile).to.exist;
 				expect(newFile.contents).to.exist;
 				expect(newFile.contents.toString('utf8')).to.equal(fs.readFileSync('test/expected/withinline/main.xml', 'utf8'));
+				done();
 			});
 			
 			stream.write(file);
@@ -89,6 +90,7 @@ describe('gulp-inject-file', function() {
 				expect(newFile).to.exist;
 				expect(newFile.contents).to.exist;
 				expect(newFile.contents.toString('utf8')).to.equal(fs.readFileSync('test/expected/withinline/main.xml', 'utf8'));
+				done();
 			});
 			
 			stream.write(file);
