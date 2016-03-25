@@ -52,6 +52,48 @@ describe('gulp-inject-file', function() {
             stream.write(file);
             stream.end();
         });
+		
+		it('should inject file within a line by pattern', function(done) {
+			var file = new gutil.File({
+				path: 'test/fixtures/withinline/main.xml',
+				cwd: 'test/fixtures/withinline/',
+				base: 'test/fixtures/withinline/',
+				contents: fs.readFileSync('test/fixtures/withinline/main.xml')
+			});
+			
+			var stream = injectFilePlugin({
+				pattern: '<!-- inject\\:<filename> -->'
+			});
+			
+			stream.on('data', function(newFile) {
+				expect(newFile).to.exist;
+				expect(newFile.contents).to.exist;
+				expect(newFile.contents.toString('utf8')).to.equal(fs.readFileSync('test/expected/withinline/main.xml', 'utf8'));
+			});
+			
+			stream.write(file);
+            stream.end();
+		});
+		
+		it('should inject file within a line using default pattern', function(done) {
+			var file = new gutil.File({
+				path: 'test/fixtures/withinline/main.xml',
+				cwd: 'test/fixtures/withinline/',
+				base: 'test/fixtures/withinline/',
+				contents: fs.readFileSync('test/fixtures/withinline/main.xml')
+			});
+			
+			var stream = injectFilePlugin();
+			
+			stream.on('data', function(newFile) {
+				expect(newFile).to.exist;
+				expect(newFile.contents).to.exist;
+				expect(newFile.contents.toString('utf8')).to.equal(fs.readFileSync('test/expected/withinline/main.xml', 'utf8'));
+			});
+			
+			stream.write(file);
+            stream.end();
+		});
 
         describe('transformation', function() {
             var file, transformMock, pattern, options;
