@@ -8,9 +8,9 @@ var PluginError = gutil.PluginError;
 const PLUGIN_NAME = 'gulp-inject-file';
 
 function gulpInjectFile(opts) {
-    const FILENAME_PATTERN = '\\s*([\\w\\-\\_\\.\\\\\\/]+)';
+    const FILENAME_PATTERN = '\\s*([\\w\\-.\\\\/]+)\\s*'; //Unescaped \s*([\w\-.\\\/]+)\s*
     const FILENAME_MARKER = '<filename>';
-    const DEFAULT_PATTERN = '<!-- inject\\:<filename> -->';
+    const DEFAULT_PATTERN = '<!--\\s*inject:<filename>-->';
 
     opts = opts || {};
     opts.pattern = opts.pattern || DEFAULT_PATTERN;
@@ -21,20 +21,21 @@ function gulpInjectFile(opts) {
 
         if (isBuffer) {
             var content = file.contents.toString('utf8');
-            var injectPattern = '^([\\t ]*)' + opts.pattern.replace(FILENAME_MARKER, FILENAME_PATTERN);
+            var injectPattern = '^([ \\t]*)(.*?)' + opts.pattern.replace(FILENAME_MARKER, FILENAME_PATTERN);
             var regex = new RegExp(injectPattern, 'm');
-            var fileName, whitespace;
+            var fileName, textBefore, whitespace;
 
             while (currMatch = regex.exec(content)) {
                 match = currMatch[0];
                 whitespace = currMatch[1];
-                fileName = currMatch[2];
+				textBefore = currMatch[2];
+                fileName = currMatch[3];
 
-                var injectContent = _(getFileContent(path.join(path.dirname(file.path), fileName)).split(/\r?\n/))
-                    .map(function(line) {
-                        return whitespace + line;
+                var injectContent = whitespace + textBefore + 
+					_(getFileContent(path.join(path.dirname(file.path), fileName)).split(/\r?\n/))
+                    .map(function(line, i) {
+                        return (i > 0) ? whitespace + line : line;
                     })
-                    .value()
                     .join('\n');
 
                 content = content.replace(match, injectContent);

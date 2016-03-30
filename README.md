@@ -51,9 +51,10 @@ gulp.task('inject', function () {
     return gulp.src('./src/main.xml')
                 .pipe(injectfile({
                     // can use custom regex pattern here
-                    // <filename> token will be replaces by filename regex pattern.
-                    // this parameter is optional, default value: '<!-- inject\\:<filename> -->'
-                    pattern: '<!--\\sinject:<filename>-->'
+                    // <filename> token will be replaced by filename regex pattern.
+					// do not use capturing groups within your custom regex.
+                    // this parameter is optional, default value: '<!--\\s*inject:<filename>-->'
+                    pattern: '<!--\\s*inject:<filename>-->'
                 }));
 });
 ```
