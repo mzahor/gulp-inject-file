@@ -38,7 +38,7 @@ function gulpInjectFile(opts) {
                     })
                     .join('\n');
 
-                content = content.replace(match, injectContent);
+                content = content.replace(match, function() { return injectContent; });
             }
 
             file.contents = new Buffer(content);
