@@ -97,6 +97,29 @@ describe('gulp-inject-file', function() {
             stream.end();
 		});
 
+        it('should inject file with path including at sign or underscore by pattern', function(done) {
+            var file = new gutil.File({
+                path: 'test/fixtures/inject/at-sign-underscore.xml',
+                cwd: 'test/fixtures/inject/',
+                base: 'test/fixtures/inject/',
+                contents: fs.readFileSync('test/fixtures/inject/at-sign-underscore.xml')
+            });
+
+            var stream = injectFilePlugin({
+                pattern: '<!-- inject\\:<filename> -->'
+            });
+
+            stream.on('data', function(newFile) {
+                expect(newFile).to.exist;
+                expect(newFile.contents).to.exist;
+                expect(newFile.contents.toString('utf8')).to.equal(fs.readFileSync('test/expected/inject/at-sign-underscore.xml', 'utf8'));
+                done();
+            });
+
+            stream.write(file);
+            stream.end();
+        });        
+
         describe('transformation', function() {
             var file, transformMock, pattern, options;
 
