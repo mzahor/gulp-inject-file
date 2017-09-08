@@ -1,29 +1,35 @@
 {
-    "name": "gulp-inject-file",
-    "repository": "https://github.com/mzahor/gulp-inject-file",
-    "version": "0.0.18",
-    "description": "Gulp plugin for injecting files into another files.",
-    "main": "index.js",
-    "scripts": {
-        "test": "mocha"
-    },
-    "keywords": [
-        "gulp",
-        "inject",
-        "file"
-    ],
-    "author": "Marian Zagoruiko",
-    "license": "MIT",
-    "dependencies": {
-        "event-stream": "^3.2.0",
-        "gulp": "^3.8.10",
-        "gulp-util": "^3.0.1",
-        "lodash": "^2.4.1"
-    },
-    "devDependencies": {
-        "chai": "^1.10.0",
-        "gulp-mocha": "^2.0.0",
-        "mocha": "^2.1.0",
-        "sinon": "^1.15.4"
-    }
+  "name": "gulp-inject-file",
+  "repository": "https://github.com/mzahor/gulp-inject-file",
+  "version": "0.0.18",
+  "description": "Gulp plugin for injecting files into another files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  },
+  "keywords": [
+    "gulp",
+    "inject",
+    "file"
+  ],
+  "author": "Marian Zagoruiko",
+  "license": "MIT",
+  "dependencies": {
+    "event-stream": "^3.3.4",
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.8",
+    "lodash": "^2.4.2"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "eslint": "^4.6.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "gulp-mocha": "^2.0.0",
+    "mocha": "^2.5.3",
+    "sinon": "^1.15.4"
+  }
 }
