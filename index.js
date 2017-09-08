@@ -8,7 +8,7 @@ var PluginError = gutil.PluginError;
 const PLUGIN_NAME = 'gulp-inject-file';
 
 function gulpInjectFile(opts) {
-    const FILENAME_PATTERN = '\\s*([\\w\\-.\\\\/]+)\\s*'; //Unescaped \s*([\w\-.\\\/]+)\s*
+    const FILENAME_PATTERN = '\\s*([\\w@_\\-.\\\\/]+)\\s*'; //Unescaped \s*([\w@_\-.\\\/]+)\s*
     const FILENAME_MARKER = '<filename>';
     const DEFAULT_PATTERN = '<!--\\s*inject:<filename>-->';
 
